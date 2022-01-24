@@ -1,0 +1,111 @@
+
+CREATE TABLE DimDistrict(
+   district_sk int NOT NULL IDENTITY(1,1),
+   alternate_district_id  INTEGER  NOT NULL  
+  ,A2  VARCHAR(19) NOT NULL
+  ,A3  VARCHAR(15) NOT NULL
+  ,A4  INTEGER  NOT NULL
+  ,A5  INTEGER  NOT NULL
+  ,A6  INTEGER  NOT NULL
+  ,A7  INTEGER  NOT NULL
+  ,A8  INTEGER  NOT NULL
+  ,A9  INTEGER  NOT NULL
+  ,A10 NUMERIC(5,1) NOT NULL
+  ,A11 INTEGER  NOT NULL
+  ,A12 VARCHAR(4) NOT NULL
+  ,A13 NUMERIC(4,2) NOT NULL
+  ,A14 INTEGER  NOT NULL
+  ,A15 VARCHAR(5) NOT NULL
+  ,A16 INTEGER  NOT NULL,
+  insert_date date NOT NULL,
+  modified_date date NOT NULL
+);
+
+
+CREATE TABLE DimAccount(
+   account_sk INT NOT NULL IDENTITY(1,1),
+   alternate_account_id  INTEGER  NOT NULL 
+  ,district_key INTEGER  NOT NULL
+  ,frequency   VARCHAR(18) NOT NULL
+  ,date        DATE  NOT NULL,
+  insert_date date NOT NULL,
+  modified_date date NOT NULL
+);
+
+CREATE TABLE DimLoan(
+   loan_sk INT NOT NULL IDENTITY(1,1), 
+   alternate_loan_id    INTEGER  NOT NULL 
+  ,account_key INTEGER  NOT NULL
+  ,date       DATE  NOT NULL
+  ,amount     INTEGER  NOT NULL
+  ,duration   INTEGER  NOT NULL
+  ,payments   NUMERIC(7,2) NOT NULL
+  ,status     VARCHAR(1) NOT NULL,
+  insert_date date NOT NULL,
+  modified_date date NOT NULL,
+  start_date date NOT NULL,
+  end_date date NOT NULL,
+  current_flag BIT
+);
+
+
+CREATE TABLE DimClient(
+   client_sk INT NOT NULL IDENTITY(1,1), 
+   alternate_client_id    INTEGER  NOT NULL 
+  ,birth_number INTEGER  NOT NULL
+  ,district_key  INTEGER  NOT NULL,
+   insert_date date NOT NULL,
+   modified_date date NOT NULL
+);
+
+CREATE TABLE DimDisp(
+    disp_sk INT NOT NULL IDENTITY(1,1), 
+   alternate_disp_id    INTEGER  NOT NULL 
+  ,client_key  INTEGER  NOT NULL
+  ,account_key INTEGER  NOT NULL
+  ,type       VARCHAR(9) NOT NULL,
+   insert_date date NOT NULL,
+   modified_date date NOT NULL
+);
+
+CREATE TABLE DimCard(
+   card_sk INT NOT NULL IDENTITY(1,1),
+   alternate_card_id INTEGER  NOT NULL 
+  ,disp_key INTEGER  NOT NULL
+  ,type    VARCHAR(7) NOT NULL
+  ,issued  VARCHAR(15) NOT NULL,
+   insert_date date NOT NULL,
+   modified_date date NOT NULL
+  
+);
+
+
+CREATE TABLE DimOrders(
+   order_sk INT NOT NULL IDENTITY(1,1),
+   alternate_order_id   INTEGER  NOT NULL 
+  ,account_key INTEGER  NOT NULL
+  ,bank_to    VARCHAR(2) NOT NULL
+  ,account_to_key  INTEGER  NOT NULL
+  ,amount     NUMERIC(8,2) NOT NULL
+  ,k_symbol   VARCHAR(8),
+   insert_date date NOT NULL,
+   modified_date date NOT NULL
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
